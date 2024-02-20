@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  server-dev:
+    image: golang:1.22.0-bullseye
+    working_dir: '/src/app/'
+    volumes:
+      - '.:/src/app'
+    command: bash
+    network_mode: "host"
+
+  db:
+    image: postgres:alpine
+    container_name: neoway_pg_db
+    network_mode: "host"
+    environment:
+      - DEBUG=false
+      - PGDATA=/pg_data
+      - POSTGRES_USER=neoway
+      - POSTGRES_PASSWORD=neoway
+      - POSTGRES_DB=neoway
+    volumes:
+      - ./containers/pg_data/PGDATA:/pg_data
+      - ./containers/pg_data/postgresql:/var/lib/postgresql
+    

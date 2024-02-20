@@ -1,0 +1,14 @@
+'CPF                PRIVATE     INCOMPLETO  DATA DA ÚLTIMA COMPRA TICKET MÉDIO          TICKET DA ÚLTIMA COMPRA LOJA MAIS FREQUÊNTE LOJA DA ÚLTIMA COMPRA
+041.091.641-25     0           0           NULL                  NULL                  NULL                    NULL                NULL
+058.189.421-98     0           0           NULL                  NULL                  NULL                    NULL                NULL
+769.013.439-49     0           0           NULL                  NULL                  NULL                    NULL                NULL
+101.520.857-69     0           0           NULL                  NULL                  NULL                    NULL                NULL
+077.844.088-54     0           0           NULL                  NULL                  NULL                    NULL                NULL
+058.100.109-54     0           0           NULL                  NULL                  NULL                    NULL                NULL
+255.917.618-10     0           1           NULL                  NULL                  NULL                    NULL                NULL
+050.984.859-16     1           0           NULL                  NULL                  NULL                    NULL                NULL
+023.521.319-52     0           0           NULL                  NULL                  NULL                    NULL                NULL
+891.098.302-78     0           0           NULL                  NULL                  NULL                    NULL                NULL
+046.857.249-09     0           0           NULL                  NULL                  NULL                    NULL                NULL
+050.687.169-01     0           0           NULL                  NULL                  NULL                    NULL                NULL
+952.388.751-34     0           0           NULL                  NULL                  NULL                    NULL                NULL

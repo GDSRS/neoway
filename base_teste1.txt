@@ -1,5 +1,5 @@
 'CPF                PRIVATE     INCOMPLETO  DATA DA ÚLTIMA COMPRA TICKET MÉDIO          TICKET DA ÚLTIMA COMPRA LOJA MAIS FREQUÊNTE LOJA DA ÚLTIMA COMPRA
-041.091.641-25     0           0           NULL                  NULL                  NULL                    NULL                NULL
+529.982.247-25     0           0           NULL                  NULL                  NULL                    NULL                NULL
 058.189.421-98     0           0           NULL                  NULL                  NULL                    NULL                NULL
 769.013.439-49     0           0           NULL                  NULL                  NULL                    NULL                NULL
 101.520.857-69     0           0           NULL                  NULL                  NULL                    NULL                NULL

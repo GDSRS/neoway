@@ -1,6 +1,6 @@
 database:
   driver: postgres
-  host: localhost
+  host: db
   port: 5432
   name: neoway
   username: neoway

@@ -5,6 +5,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 	"github.com/spf13/viper"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -14,8 +15,8 @@ import (
 var Pool *sqlx.DB
 
 func InitDatabase() {
-	// if pool is not null we already initialized the database
 	if Pool != nil {
+		slog.Debug("Pool already initialized returning...")
 		return
 	}
 
@@ -37,6 +38,8 @@ func createDatabasePool() {
 		viper.GetString("database.sslmode"),
 	)
 
+	slog.Info(fmt.Sprintf("Database string %s", connStr))
+
 	Pool = sqlx.MustConnect("postgres", connStr)
 	Pool.SetMaxIdleConns(1)
 	Pool.SetMaxOpenConns(1)
@@ -45,6 +48,7 @@ func createDatabasePool() {
 func createTables() {
 	fileContent, err := os.ReadFile("/src/app/sql/init_database.sql")
 	if err != nil {
+		slog.Error(fmt.Sprintf("Error reading content of file: %s", err))
 		panic(err)
 	}
 	executeSql(string(fileContent))
@@ -55,6 +59,7 @@ func executeSql(sqlCommand string) {
 	tx.MustExec(sqlCommand)
 	err := tx.Commit()
 	if err != nil {
+		slog.Error(fmt.Sprintf("Error executing sql from file: %s", err))
 		panic(err)
 	}
 }
@@ -65,6 +70,7 @@ func getCleanScripts(scriptsDirectory string) []string {
 	filesFound := []string{}
 	entries, err := os.ReadDir(scriptsDirectory)
 	if err != nil {
+		slog.Error(fmt.Sprintf("Error reading directory: %s", err))
 		panic(err)
 	}
 
@@ -89,6 +95,7 @@ func CleanDataScripts() {
 	for _, file := range scriptFiles {
 		fileContent, err := os.ReadFile(filepath.Join("/src/app/sql/", file))
 		if err != nil {
+			slog.Error(fmt.Sprintf("Error reading content of file: %s", err))
 			panic(err)
 		}
 		executeSql(string(fileContent))

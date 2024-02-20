@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  server:
+    build:
+      target: builder
+      context: .
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:alpine
+    container_name: neoway_pg_db
+    ports:
+      - '5436:5432'
+    environment:
+      - DEBUG=false
+      - PGDATA=/pg_data
+      - POSTGRES_USER=neoway
+      - POSTGRES_PASSWORD=neoway
+      - POSTGRES_DB=neoway
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "neoway"]
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 1s

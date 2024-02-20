@@ -1,6 +1,11 @@
 -- Just one step where we clean all data from file_data table
 
--- \echo Clean CPF/CNPJ with invalid data
+-- Add real null values to string fields
+update public.file_data fd set cpf = NULL where fd.cpf = 'NULL';
+update public.file_data fd set loja_mais_frequente = NULL where fd.loja_mais_frequente = 'NULL';
+update public.file_data fd set loja_ultima_compra = NULL where fd.loja_ultima_compra = 'NULL';
+
+-- Clean CPF/CNPJ with invalid data
 delete from public.file_data fd where fd.cpf ~ '[a-zA-Z]+' or length(fd.cpf) < 11;
 delete from public.file_data fd where fd.loja_mais_frequente ~ '[a-zA-Z]+' or length(fd.loja_mais_frequente) < 14;
 delete from public.file_data fd where fd.loja_ultima_compra ~ '[a-zA-Z]+' or length(fd.loja_ultima_compra) < 14;
